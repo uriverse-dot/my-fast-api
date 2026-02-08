@@ -1,0 +1,37 @@
+from fastapi import FastAPI
+from datetime import datetime
+import random
+
+app = FastAPI()
+
+@app.get("/")
+def home():
+    return {
+        "message": "🔥 My First API is LIVE!",
+        "developer": "You",
+        "mission": "Build 10 backends in 3 months",
+        "timestamp": datetime.now().isoformat(),
+        "status": "rocking"
+    }
+
+@app.get("/projects")
+def projects():
+    return {
+        "current": "Week 1: Personal Dashboard API",
+        "next": "Week 2: Database Integration",
+        "goal": "LearnTrack Pro - Full Learning Platform"
+    }
+
+@app.get("/motivate")
+def motivate():
+    quotes = [
+        "First deployment today! ✅",
+        "Every expert was once a beginner",
+        "Code → Deploy → Repeat 🚀",
+        "Your backend portfolio starts NOW"
+    ]
+    return {"quote": random.choice(quotes)}
+
+@app.get("/health")
+def health():
+    return {"status": "healthy", "uptime": "since just now!"}
